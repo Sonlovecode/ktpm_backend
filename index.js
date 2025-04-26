@@ -19,8 +19,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // Kết nối MongoDB
-//const mongoURI = process.env.MONGODB_URI || 'mongodb://host.docker.internal:27017/database'; // Thay đổi URI nếu cần
- const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/database'; // Thay đổi URI nếu cần
+const mongoURI = process.env.MONGODB_URI || 'mongodb://host.docker.internal:27017/database'; // Thay đổi URI nếu cần
+ //const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/database'; // Thay đổi URI nếu cần
 mongoose.connect(mongoURI)
     .then(() => console.log("✅ Kết nối MongoDB thành công"))
     .catch((err) => console.error("❌ Lỗi kết nối MongoDB:", err));
