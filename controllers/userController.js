@@ -116,4 +116,78 @@ const loginController = async (req, res) => {
     }
 }
 
-module.exports = { registerController, loginController }
+const getAllUsers = async (req, res) =>{
+    try {
+        const getUsers = await userModel.find();
+        if(!getUsers || getUsers.length === 0){
+            return res.status(404).json({
+                success: false,
+                message: 'Không có người dùng nào'
+            })
+        }
+        res.status(200).json({
+            success: true,
+            message: 'Lấy danh sách người dùng thành công',
+            data: getUsers
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: 'Lỗi khi lấy danh sách người dùng',
+            error: error.message
+        })
+    }
+}
+
+const deleteUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!id) {
+            return res.status(400).json({
+                success: false,
+                message: 'Thiếu thông tin người dùng cần xóa'
+            })
+        }
+
+        const user = await userModel.findByIdAndDelete(id);
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: 'Không tìm thấy người dùng'
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            message: 'Xóa người dùng thành công',
+            data: user
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: 'Lỗi khi xóa người dùng',
+            error: error.message
+        })
+    }
+}
+   const countUsers = async (req, res) =>{
+    try {
+        const count = await userModel.countDocuments();
+        res.status(200).json(({
+            success: true,
+            message: 'Đếm người dùng thành công',
+            count
+        }))
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: 'Lỗi khi đếm người dùng',
+            error: error.message
+        })
+    }
+   }
+
+module.exports = { registerController, loginController, getAllUsers, deleteUser, countUsers}  
