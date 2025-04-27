@@ -29,7 +29,9 @@ mongoose.connect(mongoURI)
 app.get('/api/test', (req, res) => {
     res.json({ message: "API hoạt động tốt!" });
 });
-
+app.get('/', (req, res) => {
+    res.send('Backend is running!');
+  });
 
 // app.use('/api/v2', phoneRoutes);
 app.use('/api/v1', usersRouter);
