@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3002;
 
 
-app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.json({ limit: '27mb' }));
 app.use(cors());
 app.use(morgan('dev'))
 app.use(express.json())
