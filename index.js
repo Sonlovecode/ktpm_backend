@@ -43,9 +43,9 @@ app.listen(PORT, () => {
     console.log(`🚀 Server đang chạy tại http://localhost:${PORT}`);
 });
 
-const cors = require('cors');
+// const cors = require('cors');
 
-// Cho phép frontend từ Vercel (hoặc localhost nếu cần)
-app.use(cors({
-  origin: ['https://ktpm-frontend.vercel.app', 'http://localhost:3000'],
-}));
+// // Cho phép frontend từ Vercel (hoặc localhost nếu cần)
+// // app.use(cors({
+// //   origin: ['https://ktpm-frontend.vercel.app'],
+// // }));
