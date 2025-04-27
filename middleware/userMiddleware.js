@@ -2,7 +2,12 @@ const JWT = require('jsonwebtoken');
 const userModel = require('../models/userModel');
 
 
-
+const cors = require('cors');
+app.use(cors());
+app.use(cors({
+    origin: ['https://ktpm-frontend.vercel.app/'],  // <-- Đúng link Vercel frontend của bạn
+    credentials: true,
+  }));
 
 
 const requireSignIn = async (req, res, next) => {
