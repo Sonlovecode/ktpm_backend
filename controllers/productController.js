@@ -58,7 +58,7 @@ const updateAllProduct = async (req, res) => {
         const id = req.params.id;
         const productExist = await Product.findById(id);
         if (!productExist) {
-            res.status(404).json({ message: 'Không thể update sản phẩm' })
+           return res.status(404).json({ message: 'Không thể update sản phẩm' }) // return để dừng hàm
         }
         const updateProduct = await Product.findByIdAndUpdate(id, req.body, {
             new: true

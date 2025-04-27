@@ -3,11 +3,7 @@ const userModel = require('../models/userModel');
 
 
 
-const cors = require('cors');
-app.use(cors({
-  origin: ['https://your-vercel-app.vercel.app', 'http://localhost:3000'],
-  credentials: true
-}));
+
 
 const requireSignIn = async (req, res, next) => {
     try {
