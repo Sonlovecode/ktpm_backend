@@ -42,3 +42,9 @@ app.use('/api/v2/', productRouter)
 app.listen(PORT, () => {
     console.log(`🚀 Server đang chạy tại http://localhost:${PORT}`);
 });
+
+
+app.use(cors({
+    origin: ['https://ktpm-frontend.vercel.app/'],  // <-- Đúng link Vercel frontend của bạn
+    credentials: true,
+  }));
