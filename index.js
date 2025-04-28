@@ -49,3 +49,9 @@ app.listen(PORT, () => {
 // // app.use(cors({
 // //   origin: ['https://ktpm-frontend.vercel.app'],
 // // }));
+// Cấu hình CORS
+app.use(cors({
+    origin: 'http://localhost:54053', // Địa chỉ của frontend
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Các phương thức HTTP cho phép
+    allowedHeaders: ['Content-Type', 'Authorization'], // Các header cho phép
+  }));
